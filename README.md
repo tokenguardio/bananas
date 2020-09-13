@@ -6,7 +6,7 @@ Specification of branchmonkey API. Used by branchmonkey producer and consumers. 
 Make virtual env
 ```python -m venv .venv && source .venv/bin/activate```
 Install dependencies
-```pip install poetry && poetry install```
+```pip install .```
 ## Testing
 Run command
 ```pytest```
