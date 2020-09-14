@@ -18,6 +18,7 @@ Run command
 ## Usage
 
 ### Parse string to AST and execute it
+Consumers use bananas to parse code and then execute it:
 ```python
 from bananas import parse
 from bananas.ast import Argv, AssertReturn
@@ -48,8 +49,8 @@ def execute_assert_return(node):
     print(f"{node.invoke.function} returns: {get_type(node.expected_result)}")
 
 
-def execute(nodes):
-    for node in nodes:
+def execute(ast):
+    for node in ast:
         ast_to_execution[type(node)](node)
 
 
@@ -59,11 +60,12 @@ ast_to_execution = {
 }
 
 
-parsed = parse(program)
-execute(parsed)
+ast = parse(program)
+execute(ast)
 ```
 
 ### Serializing
+Producer serializes AST to string:
 ```python
 from bananas import serialize
 from bananas.ast import Argv, AssertReturn, Invoke, Integer32Const
