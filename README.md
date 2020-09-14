@@ -4,8 +4,11 @@ Specification of branchmonkey API. Used by branchmonkey producer and consumers. 
 
 ## Installation
 Make virtual env
+
 ```python -m venv .venv && source .venv/bin/activate```
+
 Install dependencies
+
 ```pip install poetry && poetry install```
 
 ## Testing
@@ -14,7 +17,7 @@ Run command
 
 ## Usage
 
-### Parsing
+### Parse string to AST and execute it
 ```python
 from bananas import parse
 from bananas.ast import Argv, AssertReturn
