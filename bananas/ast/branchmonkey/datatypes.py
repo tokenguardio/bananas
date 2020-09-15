@@ -1,5 +1,4 @@
 from dataclasses import dataclass
-from typing import List
 
 from bananas.ast.common import quote
 from bananas.ast.webassembly.datatypes import I32

@@ -1,5 +1,5 @@
 from dataclasses import dataclass
-from typing import List
+from typing import Tuple
 
 from bananas.ast.common import quote
 from bananas.serializer.node import Node, to_sexpr
@@ -9,7 +9,7 @@ from bananas.serializer.node import Node, to_sexpr
 class Invoke(Node):
     op = "invoke"
     function: str
-    args: List[Node]
+    args: Tuple[Node]
 
     @staticmethod
     def create(function_name, *args):

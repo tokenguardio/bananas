@@ -1,5 +1,5 @@
 from dataclasses import dataclass
-from typing import List
+from typing import Tuple
 
 from bananas.ast.branchmonkey.datatypes import ArrayConst, Pointer
 from bananas.ast.common import quote
@@ -16,7 +16,7 @@ class Declare(Node):
 @dataclass
 class Argv(Node):
     op = "argv"
-    argv: List
+    argv: Tuple
 
     def to_sexpr(self):
         return self.op, *map(quote, self.argv)

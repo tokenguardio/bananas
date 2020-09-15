@@ -1,7 +1,7 @@
 """ Mocks clock_res_get and clock_time_get """
 from dataclasses import dataclass
 from functools import partial
-from typing import List, Union
+from typing import Tuple, Union
 
 from bananas.ast.branchmonkey.mocks import Mock
 from bananas.ast.common import quote
@@ -32,7 +32,7 @@ class ClockGet(Node):
     """WasiClockTimeData alongside clock it is generated for"""
 
     clock_id: Integer32Const
-    data: List
+    data: Tuple
 
     @classmethod
     def create(cls, clock_id, *data):
