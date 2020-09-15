@@ -2,7 +2,7 @@ from dataclasses import dataclass
 from typing import List
 
 from bananas.ast.common import quote
-from bananas.ast.web_assembly.datatypes import I32
+from bananas.ast.webassembly.datatypes import I32
 from bananas.serializer import Node, to_sexpr
 
 

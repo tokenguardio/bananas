@@ -5,7 +5,7 @@ from typing import List, Union
 
 from bananas.ast.branchmonkey.mocks import Mock
 from bananas.ast.common import quote
-from bananas.ast.web_assembly.datatypes import Integer32Const, Integer64Const
+from bananas.ast.webassembly.datatypes import Integer32Const, Integer64Const
 from bananas.serializer import Node, to_sexpr
 
 

@@ -22,7 +22,7 @@ Consumers use bananas to parse code and then execute it:
 ```python
 from bananas import parse
 from bananas.ast import Argv, AssertReturn
-from bananas.ast.web_assembly.datatypes import I32, I64
+from bananas.ast.webassembly.datatypes import I32, I64
 
 
 program = r""";; (invoke "__original_main")

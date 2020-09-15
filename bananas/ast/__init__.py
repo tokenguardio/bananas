@@ -6,14 +6,14 @@ from bananas.ast.branchmonkey.wasi.clock import (
     ClockTimeGet,
     WasiClockTimeData,
 )
-from bananas.ast.web_assembly.assertions import AssertReturn, AssertTrap
-from bananas.ast.web_assembly.datatypes import (
+from bananas.ast.webassembly.assertions import AssertReturn, AssertTrap
+from bananas.ast.webassembly.datatypes import (
     Float32Const,
     Float64Const,
     Integer32Const,
     Integer64Const,
 )
-from bananas.ast.web_assembly.invoke import Invoke
+from bananas.ast.webassembly.invoke import Invoke
 
 nodes = [
     Integer32Const,

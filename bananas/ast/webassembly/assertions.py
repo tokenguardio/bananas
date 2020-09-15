@@ -2,7 +2,7 @@ from dataclasses import dataclass
 from typing import Any
 
 from bananas.ast.common import quote
-from bananas.ast.web_assembly.invoke import Invoke
+from bananas.ast.webassembly.invoke import Invoke
 from bananas.serializer.node import Node, to_sexpr
 
 
