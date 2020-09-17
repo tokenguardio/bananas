@@ -34,7 +34,7 @@ class Node:
 
     @classmethod
     def create(cls, *args, **kwargs):
-        """Constructor. Any function specific data preparation can be done here."""
+        """Constructor used by parser. Any function specific data preparation can be done here."""
         return cls(*args, **kwargs)
 
     def to_sexpr(self):

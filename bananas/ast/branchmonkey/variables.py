@@ -1,22 +1,28 @@
 from dataclasses import dataclass
 from typing import Tuple
 
-from bananas.ast.branchmonkey.datatypes import ArrayConst, Pointer
 from bananas.ast.common import quote
-from bananas.serializer.node import Node
+from bananas.serializer.node import Node, to_sexpr
 
 
 @dataclass
 class Declare(Node):
     op = "declare"
-    name: Pointer
-    value: ArrayConst
+    name: str
+    values: Tuple[Node]
+
+    @staticmethod
+    def create(name, *args):
+        return Declare(name, args)
+
+    def to_sexpr(self):
+        return self.op, quote(self.name), *map(to_sexpr, self.values)
 
 
 @dataclass
 class Argv(Node):
     op = "argv"
-    argv: Tuple
+    argv: Tuple[str]
 
     def to_sexpr(self):
         return self.op, *map(quote, self.argv)

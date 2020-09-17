@@ -1,4 +1,4 @@
-from bananas.ast.branchmonkey.datatypes import ArrayConst, Pointer
+from bananas.ast.branchmonkey.datatypes import Pointer
 from bananas.ast.branchmonkey.mocks import Mock
 from bananas.ast.branchmonkey.variables import Argv, Declare
 from bananas.ast.branchmonkey.wasi.clock import (
@@ -6,6 +6,7 @@ from bananas.ast.branchmonkey.wasi.clock import (
     ClockTimeGet,
     WasiClockTimeData,
 )
+from bananas.ast.branchmonkey.wasi.filesystem import Filesystem
 from bananas.ast.webassembly.assertions import AssertReturn, AssertTrap
 from bananas.ast.webassembly.datatypes import (
     Float32Const,
@@ -14,6 +15,7 @@ from bananas.ast.webassembly.datatypes import (
     Integer64Const,
 )
 from bananas.ast.webassembly.invoke import Invoke
+from bananas.serializer import Node
 
 nodes = [
     Integer32Const,
@@ -26,11 +28,11 @@ nodes = [
     Argv,
     Declare,
     Pointer,
-    ArrayConst,
     Mock,
     ClockTimeGet,
     ClockResGet,
     WasiClockTimeData,
+    Filesystem,
 ]
 
 name_to_node = {node.get_op(): node for node in nodes}

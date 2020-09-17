@@ -1,21 +1,16 @@
 from test.conftest import validate
 
-from bananas.ast import (
-    Argv,
-    ArrayConst,
-    AssertReturn,
-    Declare,
-    Integer32Const,
-    Invoke,
-    Pointer,
-)
+from bananas.ast import Argv, AssertReturn, Declare, Integer32Const, Invoke, Pointer
 
-declare = """(declare (i32.pointer "my_ptr") (i32.array.const 3))
-(assert_return (invoke "foo" (i32.pointer "my_ptr") (i32.const 5)) (i32.const 0))"""
+declare = """(declare "ptr" (i32.const 16843009) (i32.const 16843009) (i32.const 42))
+(assert_return (invoke "foo" (i32.pointer "ptr") (i32.const 2)) (i32.const 1))"""
 declare_ast = [
-    Declare(Pointer("my_ptr"), ArrayConst("3")),
+    Declare(
+        "ptr",
+        (Integer32Const("16843009"), Integer32Const("16843009"), Integer32Const("42")),
+    ),
     AssertReturn(
-        Invoke("foo", (Pointer("my_ptr"), Integer32Const("5"))), Integer32Const("0")
+        Invoke("foo", (Pointer("ptr"), Integer32Const("2"))), Integer32Const("1")
     ),
 ]
 

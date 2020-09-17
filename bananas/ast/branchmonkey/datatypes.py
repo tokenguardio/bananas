@@ -6,12 +6,6 @@ from bananas.serializer import Node, to_sexpr
 
 
 @dataclass
-class ArrayConst(I32):
-    op = "array.const"
-    size: int
-
-
-@dataclass
 class Pointer(I32):
     op = "pointer"
     name: str
