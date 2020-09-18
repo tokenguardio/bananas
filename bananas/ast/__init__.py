@@ -1,4 +1,10 @@
-from bananas.ast.branchmonkey.datatypes import Pointer
+from bananas.ast.branchmonkey.datatypes import (
+    Float32Symbolic,
+    Float64Symbolic,
+    Integer32Symbolic,
+    Integer64Symbolic,
+    Pointer,
+)
 from bananas.ast.branchmonkey.mocks import Mock
 from bananas.ast.branchmonkey.variables import Argv, Declare
 from bananas.ast.branchmonkey.wasi.clock import (
@@ -33,6 +39,10 @@ nodes = [
     ClockResGet,
     WasiClockTimeData,
     Filesystem,
+    Integer32Symbolic,
+    Integer64Symbolic,
+    Float32Symbolic,
+    Float64Symbolic,
 ]
 
 name_to_node = {node.get_op(): node for node in nodes}
