@@ -4,7 +4,6 @@ from functools import partial
 from typing import Tuple, Union
 
 from bananas.ast.branchmonkey.mocks import Mock
-from bananas.ast.common import quote
 from bananas.ast.webassembly.datatypes import Integer32Const, Integer64Const
 from bananas.serializer import Node, to_sexpr
 

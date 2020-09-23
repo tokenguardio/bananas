@@ -9,8 +9,7 @@ def to_sexpr(element):
         return element.to_sexpr()
     elif is_list(element):
         return tuple(map(to_sexpr, element))
-    else:
-        return element
+    return element
 
 
 class Node:

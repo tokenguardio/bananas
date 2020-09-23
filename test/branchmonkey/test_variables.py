@@ -1,6 +1,16 @@
 from test.conftest import validate
 
-from bananas.ast import Argv, AssertReturn, Declare, Integer32Const, Invoke, Pointer
+from bananas import parse, serialize
+from bananas.ast import (
+    Argv,
+    AssertReturn,
+    Declare,
+    Integer32Const,
+    Invoke,
+    Pointer,
+    Symbol,
+    Symbolics,
+)
 
 declare = """(declare "ptr" (i32.const 16843009) (i32.const 16843009) (i32.const 42))
 (assert_return (invoke "foo" (i32.pointer "ptr") (i32.const 2)) (i32.const 1))"""
@@ -35,3 +45,14 @@ argv_ast = [
 
 def test_argv():
     validate(argv, argv_ast)
+
+
+symbolics = """(symbolics (symbol "n" "Lech") (symbol "m" "Roch"))"""
+symbolics_ast = [Symbolics((Symbol("n", "Lech"), Symbol("m", "Roch")))]
+
+
+def test_symbolics():
+    # FIXME: Use `validate()` once Symbolics is uncommented
+    parsed = parse(symbolics)
+    assert parsed == symbolics_ast
+    assert serialize(parsed) == f";; {symbolics}"

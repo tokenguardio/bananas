@@ -6,7 +6,7 @@ from bananas.ast.branchmonkey.datatypes import (
     Pointer,
 )
 from bananas.ast.branchmonkey.mocks import Mock
-from bananas.ast.branchmonkey.variables import Argv, Declare
+from bananas.ast.branchmonkey.variables import Argv, Declare, Symbol, Symbolics
 from bananas.ast.branchmonkey.wasi.clock import (
     ClockResGet,
     ClockTimeGet,
@@ -43,6 +43,8 @@ nodes = [
     Integer64Symbolic,
     Float32Symbolic,
     Float64Symbolic,
+    Symbolics,
+    Symbol,
 ]
 
 name_to_node = {node.get_op(): node for node in nodes}
