@@ -1,10 +1,8 @@
 from dataclasses import dataclass
-from typing import Tuple, Union
+from typing import Tuple
 
 from bananas.ast.common import quote
-from bananas.ast.webassembly.datatypes import TypeSubOp
 from bananas.serializer.node import Node, to_sexpr
-from bananas.serializer.stringify import sexpr_to_str
 
 
 @dataclass
@@ -38,14 +36,10 @@ class Argv(Node):
 class Symbol(Node):
     op = "symbol"
     name: str
-    value: Union[str, TypeSubOp]
+    value: str
 
     def to_sexpr(self):
-        if isinstance(self.value, TypeSubOp):
-            value = self.value.to_sexpr()
-        else:
-            value = quote(self.value)
-        return self.op, quote(self.name), value
+        return self.op, quote(self.name), quote(self.value)
 
 
 @dataclass

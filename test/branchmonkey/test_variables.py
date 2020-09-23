@@ -47,10 +47,8 @@ def test_argv():
     validate(argv, argv_ast)
 
 
-symbolics = """(symbolics (symbol "n" (i32.const 2)) (symbol "m" "Lech Roch"))"""
-symbolics_ast = [
-    Symbolics((Symbol("n", Integer32Const("2")), Symbol("m", "Lech Roch")))
-]
+symbolics = """(symbolics (symbol "n" "Lech") (symbol "m" "Roch"))"""
+symbolics_ast = [Symbolics((Symbol("n", "Lech"), Symbol("m", "Roch")))]
 
 
 def test_symbolics():
