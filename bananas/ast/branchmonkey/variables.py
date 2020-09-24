@@ -40,6 +40,9 @@ class BitVector(Node):
 
     def to_sexpr(self):
         return self.op, quote(self.name), quote(self.value)
+    
+    def to_string(self):
+        return "\n;;     " + str(self.to_sexpr())
 
 
 @dataclass
