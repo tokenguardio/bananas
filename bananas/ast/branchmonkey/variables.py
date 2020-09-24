@@ -40,9 +40,6 @@ class BitVector(Node):
 
     def to_sexpr(self):
         return self.op, quote(self.name), quote(self.value)
-    
-    def to_string(self):
-        return "\n;;     " + str(self.to_sexpr())
 
 
 @dataclass
@@ -54,7 +51,11 @@ class KingKong(Node):
         return self.op, *map(to_sexpr, self.bitvectors)
 
     def to_string(self):
-        return f";; {super().to_string()}"
+        return "".join(
+            f";; ({self.op}",
+            "".join(*map(lambda bv: f"\n;;     {bv.to_string()}", self.bitvectors)),
+            "\n;; )"
+        )
 
     @staticmethod
     def create(*bitvectors):
