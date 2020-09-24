@@ -33,8 +33,8 @@ class Argv(Node):
 
 
 @dataclass
-class Symbol(Node):
-    op = "symbol"
+class BitVector(Node):
+    op = "bitvec"
     name: str
     value: str
 
@@ -43,16 +43,16 @@ class Symbol(Node):
 
 
 @dataclass
-class Symbolics(Node):
-    op = "symbolics"
-    symbols: Tuple[Symbol]
+class KingKong(Node):
+    op = "kingkong"
+    bitvectors: Tuple[BitVector]
 
     def to_sexpr(self):
-        return self.op, *map(to_sexpr, self.symbols)
+        return self.op, *map(to_sexpr, self.bitvectors)
 
     def to_string(self):
         return f";; {super().to_string()}"
 
     @staticmethod
-    def create(*symbols):
-        return Symbolics(symbols)
+    def create(*bitvectors):
+        return KingKong(bitvectors)

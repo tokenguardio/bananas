@@ -8,8 +8,8 @@ from bananas.ast import (
     Integer32Const,
     Invoke,
     Pointer,
-    Symbol,
-    Symbolics,
+    BitVector,
+    KingKong,
 )
 
 declare = """(declare "ptr" (i32.const 16843009) (i32.const 16843009) (i32.const 42))
@@ -47,12 +47,12 @@ def test_argv():
     validate(argv, argv_ast)
 
 
-symbolics = """(symbolics (symbol "n" "Lech") (symbol "m" "Roch"))"""
-symbolics_ast = [Symbolics((Symbol("n", "Lech"), Symbol("m", "Roch")))]
+kingkong = """(kingkong (bitvec "n" "Lech") (bitvec "m" "Roch"))"""
+kingkong_ast = [KingKong((BitVector("n", "Lech"), BitVector("m", "Roch")))]
 
 
-def test_symbolics():
-    # FIXME: Use `validate()` once Symbolics is uncommented
-    parsed = parse(symbolics)
-    assert parsed == symbolics_ast
-    assert serialize(parsed) == f";; {symbolics}"
+def test_kingkong():
+    # FIXME: Use `validate()` once KingKong is uncommented
+    parsed = parse(kingkong)
+    assert parsed == kingkong_ast
+    assert serialize(parsed) == f";; {kingkong}"
