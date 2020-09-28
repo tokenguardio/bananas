@@ -51,6 +51,9 @@ class KingKong(Node):
         return self.op, *map(to_sexpr, self.bitvectors)
 
     def to_string(self):
+        if not self.bitvectors:
+            return ""
+        
         return "".join(
             f";; ({self.op}",
             "".join(*map(lambda bv: f"\n;;     {bv.to_string()}", self.bitvectors)),
