@@ -53,12 +53,8 @@ class KingKong(Node):
     def to_string(self):
         if not self.bitvectors:
             return ""
-        
-        return "".join(
-            f";; ({self.op}",
-            "".join(*map(lambda bv: f"\n;;     {bv.to_string()}", self.bitvectors)),
-            "\n;; )"
-        )
+        f = lambda bv: "\n;;   "+bv.to_string()
+        return f';; ({self.op} {"".join(map(f, self.bitvectors))},"\n;; )'
 
     @staticmethod
     def create(*bitvectors):
