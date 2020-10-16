@@ -2,10 +2,18 @@
 start: expr*
 _arg: _atom | expr
 expr: "(" OP _arg* ")"
-_atom: STRING | INT | FLOAT | OP
+_atom: string | INT | FLOAT | OP
+
+HEX_DIGIT: /[0-9a-fA-F]/
+HEX_NUM: (HEX_DIGIT+ ("_" HEX_DIGIT+)*)
+
+escaped_unicode: "\\u{" HEX_NUM "}"
+ESCAPED_CHAR: "\\"/[tnr\\'"]/
+
+WHITESPACE: WS
 
 // https://webassembly.github.io/spec/core/text/values.html#text-string
-STRING: "\""(CHAR | "\\n" | "\\t" | "\\\\" | "\`" | "\\\"")*"\""
+string: "\""(WHITESPACE | CHAR | ESCAPED_CHAR | escaped_unicode)*"\""
 CHAR: /[^\u0000-\u001F\u007F"\\]/
 
 OP: OP_FIRST_CHARACTER NAME_CONTENTS | OP_FIRST_CHARACTER

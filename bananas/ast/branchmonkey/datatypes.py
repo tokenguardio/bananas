@@ -6,9 +6,13 @@ from bananas.serializer import Node, to_sexpr
 
 
 @dataclass
-class Pointer(I32):
+class Pointer(Node):
     op = "pointer"
     name: str
+
+    @staticmethod
+    def get_op():
+        return "i32.pointer"
 
     def to_sexpr(self):
         return self.get_op(), quote(self.name)

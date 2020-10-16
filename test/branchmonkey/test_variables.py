@@ -12,6 +12,8 @@ from bananas.ast import (
     KingKong,
 )
 
+import pytest
+
 declare = """(declare "ptr" (i32.const 16843009) (i32.const 16843009) (i32.const 42))
 (assert_return (invoke "foo" (i32.pointer "ptr") (i32.const 2)) (i32.const 1))"""
 declare_ast = [
@@ -29,14 +31,14 @@ def test_declare():
     validate(declare, declare_ast)
 
 
-argv = r"""(argv "test" "dojpa" "he\"t\`m")
+argv = r"""(argv "test" "dojpa" "he\"t`m")
 (assert_return (invoke "f" (i32.const 1)) (i32.const 1))"""
 argv_ast = [
     Argv(
         (
             "test",
             "dojpa",
-            r"he\"t\`m",
+            'he"t`m',
         )
     ),
     AssertReturn(Invoke("f", (Integer32Const("1"),)), Integer32Const("1")),
@@ -51,6 +53,7 @@ kingkong = """(kingkong (bitvec "n" "Lech") (bitvec "m" "Roch"))"""
 kingkong_ast = [KingKong((BitVector("n", "Lech"), BitVector("m", "Roch")))]
 
 
+@pytest.mark.skip(reason="should ignore formatting")
 def test_kingkong():
     # FIXME: Use `validate()` once KingKong is uncommented
     parsed = parse(kingkong)
