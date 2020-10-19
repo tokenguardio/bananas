@@ -19,5 +19,9 @@ class AssertTrap(Node):
     invoke: Invoke
     msg: str
 
+    @staticmethod
+    def create(invoke, msg):
+        return AssertTrap(invoke, msg)
+
     def to_sexpr(self):
         return self.op, to_sexpr(self.invoke), quote(self.msg)

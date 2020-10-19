@@ -13,6 +13,12 @@ class TypeSubOp(Node):
     def get_op(cls):
         return f"{cls.val_type}.{cls.op}"
 
+    @classmethod
+    def create(cls, token=None):
+        if token != None:
+            return cls(str(token))
+        return cls()
+
 
 @dataclass
 class ConstValue:
